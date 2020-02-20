@@ -1,9 +1,18 @@
-# FROM obsidiandynamics/kafdrop
-FROM sheepkiller/kafka-manager
+# Taken from https://github.com/frudisch/openshift-kafka-manager/blob/master/Dockerfile
+FROM solsson/kafka-manager
 
-# ENV SERVER_PORT=8080
-# ENV JVM_OPTS="-Xms32M -Xmx64M"
-# ENV SERVER_SERVLET_CONTEXTPATH="/"
+ENV KAFKA_MANAGER_DIR="/opt/kafka-manager"
 
-# EXPOSE 8080
-EXPOSE 9000
+COPY fix-permissions.sh ./
+
+RUN chmod +x fix-permissions.sh
+
+RUN ./fix-permissions.sh $KAFKA_MANAGER_DIR
+
+EXPOSE 8080
+
+RUN ls -la /opt/kafka-manager/bin/
+
+WORKDIR $KAFKA_MANAGER_DIR
+
+ENTRYPOINT [ "bin/kafka-manager", "-Dhttp.port=8080" ]
