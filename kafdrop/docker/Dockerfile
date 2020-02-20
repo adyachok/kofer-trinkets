@@ -1,0 +1,7 @@
+FROM obsidiandynamics/kafdrop
+
+ENV SERVER_PORT=8080
+ENV JVM_OPTS="-Xms32M -Xmx64M"
+
+
+EXPOSE 8080
