@@ -1,6 +1,8 @@
 FROM python:3.7
 
-RUN pip3 install virtualenv tree
+RUN apt-get install -y tree
+
+RUN pip3 install virtualenv
 
 RUN python3 -m virtualenv /opt/venv
 
