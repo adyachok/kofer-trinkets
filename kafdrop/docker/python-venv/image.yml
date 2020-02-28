@@ -1,6 +1,10 @@
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"image.openshift.io/v1","kind":"ImageStream","metadata":{"annotations":{"openshift.io/image.dockerRepositoryCheck":"2018-07-20T08:00:09Z"},"labels":{"app":"python-venv"},"name":"python-venv","namespace":"zz-cd","selfLink":"/apis/image.openshift.io/v1/namespaces/zz-cd/imagestreams/python-venv"},"spec":{"dockerImageRepository":"python-venv","lookupPolicy":{"local":false}},"status":{"dockerImageRepository":"172.30.21.196:5000/zz-cd/python-venv","tags":[{"items":null}]}}
+    openshift.io/image.dockerRepositoryCheck: '2018-07-20T08:00:09Z'
   labels:
     app: python-venv
   name: python-venv
@@ -11,3 +15,5 @@ spec:
   dockerImageRepository: python-venv
   lookupPolicy:
     local: false
+status:
+  dockerImageRepository: '172.30.21.196:5000/zz-cd/python-env'
