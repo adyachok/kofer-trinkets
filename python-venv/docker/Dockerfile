@@ -1,6 +1,6 @@
 FROM python:3.7
 
-RUN apt-get install -y tree
+RUN apt-get update && apt-get install apt-file -y && apt-file update && apt-get install tree -y
 
 RUN pip3 install virtualenv
 
