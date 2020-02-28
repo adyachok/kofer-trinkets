@@ -1,0 +1,13 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  labels:
+    app: python-venv
+  name: python-venv
+  namespace: zz-cd
+  selfLink: >-
+    /apis/image.openshift.io/v1/namespaces/zz-cd/imagestreams/python-venv
+spec:
+  dockerImageRepository: python-venv
+  lookupPolicy:
+    local: false
