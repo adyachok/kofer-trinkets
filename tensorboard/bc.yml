@@ -1,0 +1,34 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"v1","kind":"BuildConfig","metadata":{"annotations":{},"creationTimestamp":null,"labels":{"app":"jenkins-slave-python"},"name":"jenkins-slave-python","namespace":"cd"},"spec":{"nodeSelector":null,"output":{"to":{"kind":"ImageStreamTag","name":"jenkins-slave-python:latest"}},"postCommit":{},"resources":{},"runPolicy":"Serial","source":{"contextDir":"jenkins-slaves/python","git":{"ref":"production","uri":"https://cd_user@bitbucket.bix-digital.com/scm/opendevstack/ods-project-quickstarters.git"},"sourceSecret":{"name":"cd-user-token"},"type":"Git"},"strategy":{"dockerStrategy":{"dockerfilePath":"Dockerfile.rhel7","from":{"kind":"ImageStreamTag","name":"jenkins-slave-base:latest"}},"type":"Docker"},"triggers":[]}}
+  creationTimestamp: '2018-07-20T08:00:07Z'
+  labels:
+    app: tensorboard
+  name: tensorboard
+  namespace: zz-cd
+  selfLink: /apis/build.openshift.io/v1/namespaces/zz-cd/buildconfigs/tensorboard
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'tensorboard:latest'
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    contextDir: tensorboard/docker
+    git:
+      ref: master
+      uri: 'https://bitbucket.bix-digital.com/scm/zz/zz-kofer.git'
+    sourceSecret:
+      name: cd-user-with-password
+    type: Git
+  strategy:
+    dockerStrategy:
+      noCache: true
+    type: Docker
+  triggers: []
