@@ -13,7 +13,7 @@ spec:
       protocol: TCP
       targetPort: 8080
   selector:
-    app: tensorbboard
+    app: tensorboard
   sessionAffinity: None
   type: ClusterIP
 status:
